@@ -1,0 +1,26 @@
+[
+  {
+    "slug": "introducao-ao-nextjs-15",
+    "titulo": "Introdução ao Next.js 15 e App Router",
+    "autor": "Marcele",
+    "data": "2026-07-25",
+    "descricao": "Aprenda os conceitos fundamentais do Next.js 15, Server Components e o poder do App Router.",
+    "conteudo": "O Next.js 15 trouxe evoluções significativas para a construção de aplicações React no servidor. Com o App Router, a renderização do lado do servidor torna-se intuitiva e muito rápida..."
+  },
+  {
+    "slug": "boas-praticas-de-seo-no-react",
+    "titulo": "Boas Práticas de SEO para Aplicações React",
+    "autor": "Marcele",
+    "data": "2026-07-24",
+    "descricao": "Guia completo sobre como otimizar seus metadados e indexação no Google usando Next.js.",
+    "conteudo": "Indexar aplicações React sempre foi um desafio. Com Server Components e a API de Metadata do Next.js, gerar títulos, descrições e OpenGraph tags dinâmicas ficou extremamente simples..."
+  },
+  {
+    "slug": "css-modules-vs-tailwind",
+    "titulo": "Estilização com CSS Modules no Next.js",
+    "autor": "Marcele",
+    "data": "2026-07-23",
+    "descricao": "Como organizar o CSS do seu projeto com escopo local de forma limpa e performática.",
+    "conteudo": "Os CSS Modules garantem que cada classe tenha um escopo único por componente, evitando vazamentos e conflitos de estilos na sua aplicação web..."
+  }
+]

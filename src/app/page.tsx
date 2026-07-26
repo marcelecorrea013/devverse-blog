@@ -1,66 +1,38 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import Link from 'next/link';
+import { getArtigos } from '@/lib/artigos';
 
-export default function Home() {
+export const revalidate = 3600; // Revalidação a cada 1 hora (ou force-static)
+
+export default async function Home() {
+  const artigos = await getArtigos();
+
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.tsx file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <div style={{ maxWidth: '800px', margin: '2rem auto', padding: '0 1rem' }}>
+      <h1 style={{ fontSize: '2rem', marginBottom: '1.5rem' }}>Últimos Artigos</h1>
+      
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+        {artigos.map((artigo) => (
+          <article 
+            key={artigo.slug} 
+            style={{ 
+              border: '1px solid #334155', 
+              padding: '1.5rem', 
+              borderRadius: '8px', 
+              backgroundColor: '#1e293b' 
+            }}
           >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+            <h2 style={{ fontSize: '1.4rem', marginBottom: '0.5rem' }}>
+              <Link href={`/artigos/${artigo.slug}`} style={{ color: '#3b82f6', textDecoration: 'none' }}>
+                {artigo.titulo}
+              </Link>
+            </h2>
+            <p style={{ fontSize: '0.875rem', color: '#94a3b8', marginBottom: '0.75rem' }}>
+              Por {artigo.autor} em {new Date(artigo.data).toLocaleDateString('pt-BR')}
+            </p>
+            <p style={{ color: '#cbd5e1' }}>{artigo.descricao}</p>
+          </article>
+        ))}
+      </div>
     </div>
   );
 }
